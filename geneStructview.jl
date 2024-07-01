@@ -1,8 +1,8 @@
-#! usr/bin/en julia
+#! usr/bin/env julia
 # Author Gaurav
 # Univeristat Potsdam
 # Date 2026-7-1
-
+# first draft written, add the multiple dispatch also. 
 module TreeView
 mutable struct gene 
   genename::String
