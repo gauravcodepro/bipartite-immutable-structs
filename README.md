@@ -1,6 +1,6 @@
 # julia-bipartite-immutable-structs
 
-- implementing immutable structs as bipartite graphs to show the pangenome bubbles.
+- implementing immutable structs for genes and pangenes. 
 - implementing the tree graphs with the decompose so that each node can be hoisted.
 
 Gaurav \
