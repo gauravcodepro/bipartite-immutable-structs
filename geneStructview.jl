@@ -21,6 +21,12 @@ mutable struct sam
   readstring::String
   readseq::String
 end 
+mutable struct spanread
+
+
+
+
+mutable struct gfa
 
 readSAM = readlines(samfile)
 storeloc = gene[]
