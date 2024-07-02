@@ -22,12 +22,26 @@ mutable struct sam
   readseq::String
 end 
 mutable struct spanread
-
+ # these struct i have to write today
 
 
 
 mutable struct gfa
+     # these struct i have to write today
 
+
+
+
+mutable struct alignment
+      # these struct i have to write today
+
+
+
+# functions for the module 
+
+# 1. sam spanning reads 
+# 2. flank and read the last bit and then inverse the bit if the bit is matching to the other hang. 
+# 3. spliceat! and see if the read overhalgs are matching at the end of the alignments for the pangenes.       
 readSAM = readlines(samfile)
 storeloc = gene[]
 for i in readlines(readSAM)
