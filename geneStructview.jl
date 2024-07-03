@@ -3,7 +3,7 @@
 # Universitat Potsdam
 # Date 2024-7-3
 
-function(samfile, variantfile)
+function samRead(samfile, variantfile)
     # reading the sam for the variants and indexing the variants as Any[] and then mapping the reads to variants by the position
     # iteration over the range of the start and the stop and if the read start iter is present
     # in the range of the mapped position extract the read and annotate the read
