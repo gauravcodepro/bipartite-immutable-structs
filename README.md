@@ -2,8 +2,8 @@
 
 - implementing mutable structs for genes and pangenes. 
 - uses Int64 so that no bufferflow @btime: a samfile with 5GB parsed in less than 10 minutes. 
-- To do: adding the following : a mutable struct for linking to the annotations, a mutable struct for linking to the bubble and a mutable struct for linking to the variant annotation. 
-- a kmerplot function added, which ias available as a functional closure julia programming and calls a kmer to the reads which harbours the variants. 
+- a kmerplot function added, which is available as a functional closure julia programming and calls a kmer to the reads which harbours the variants.
+- to add: a gene functional annotation link so that the variants can be linked to the gene and also annotated. will implement a closure. 
 
 ```
 function samReadsAll(samplesame, samplevcf)
