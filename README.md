@@ -1,7 +1,7 @@
 # julia-mutable-structs with multiple dispatch
 
 - implementing mutable structs for genes and pangenes. 
-- uses Int64 so that no bufferflow. 
+- uses Int64 so that no bufferflow @btime: a samfile with 5GB parsed in less than 10 minutes. 
 - To do: adding the following : a mutable struct for linking to the annotations, a mutable struct for linking to the bubble and a mutable struct for linking to the variant annotation. 
 
 ```
