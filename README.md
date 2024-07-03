@@ -1,4 +1,4 @@
-# julia-mutable-structs with multiple dispatch
+# julia-readvariantannot.jl
 
 - implementing mutable structs for genes and pangenes. 
 - uses Int64 so that no bufferflow @btime: a samfile with 5GB parsed in less than 10 minutes. 
@@ -6,6 +6,8 @@
 - to add: a gene functional annotation link so that the variants can be linked to the gene and also annotated. will implement a closure. 
 
 ```
+include readvariantannot.jl
+
 function samReadsAll(samplesame, samplevcf)
 # will prepare all and will return the reads spanning 
 (418, 952, "CCAGGCAGTGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCATCTGGTAGCGATGAT")
