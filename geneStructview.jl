@@ -1,52 +1,41 @@
-#! usr/bin/env julia
+#! /usr/bin/env julia
 # Author Gaurav
-# Univeristat Potsdam
-# Date 2026-7-1
-# first draft written, add the multiple dispatch also. 
-module TreeView
-mutable struct gene 
-  genename::String
-  genestart::Int8
-  geneend::Int8
-  geneID::String
-  samID::String
-  samLoc::Int8
-  samStart::Union{Int8, Float16}
-end 
-mutable struct sam
-  samstart::Union{Int8, Float64}
-  samend::Union{Int8, Float64}
-  junctionreadcount::Union{Int8, Float64}
-  uniquereadcount::Union{Int8, Float64}
-  readstring::String
-  readseq::String
-end 
-mutable struct spanread
- # these struct i have to write today
+# Universitat Potsdam
+# Date 2024-7-3
 
-
-
-mutable struct gfa
-     # these struct i have to write today
-
-
-
-
-mutable struct alignment
-      # these struct i have to write today
-
-
-
-# functions for the module 
-
-# 1. sam spanning reads 
-# 2. flank and read the last bit and then inverse the bit if the bit is matching to the other hang. 
-# 3. spliceat! and see if the read overhalgs are matching at the end of the alignments for the pangenes.       
-readSAM = readlines(samfile)
-storeloc = gene[]
-for i in readlines(readSAM)
-  push(storeloc, gene(readsam[i].split[1], readsam[i].split[2], readsam[i].split[4])
-    # add a splat notation. 
-
-  
-  
+function(samfile, variantfile)
+    # reading the sam for the variants and indexing the variants as Any[] and then mapping the reads to variants by the position
+    # iteration over the range of the start and the stop and if the read start iter is present
+    # in the range of the mapped position extract the read and annotate the read
+    # no memory loading needed making the annotations faster.
+    # using Int64 so that no buffer overflow occurs.
+    readmapStart = Any[]
+    readmapEnd = Any[]
+    readMIDTags = Any[]
+    readString = String[]
+    readfile = readlines(open(samfile))
+    for i in 1:length(readfile)
+        if !startswith(readfile[i], "@")
+            push!(readmapStart,split(split(readfile[i], r"\t")[1], r"_")[3])
+            push!(readmapEnd, split(split(readfile[i], r"\t")[1], r"_")[4])
+            push!(readMIDTags,split(readfile[i], r"\t")[6])
+            push!(readString, split(readfile[i], r"\t")[10])
+        end
+    end
+    varaintPos = Any[]
+    readvariants = readlines(open(variantfile))
+    for i in 1:readvariants
+        if !startswith(readvariants[i], r'#|##')
+          push!(variantPos, split(readvariants[i], "\t")[2])
+        end
+    end
+   iterstart = [(parse(Int64,readmapStart[i]),parse(Int64,readmapEnd[i]), readString[i]) for i in 1:length(readmapStart)]
+   getReads = Any[]
+    for i in 1:length(iterstart)
+        for j in 1:length(variantPos)
+            if iterstart[i][1] < variantPos[j] && iterstart[i][2] > variantPos[j]
+                push!(getReads, iterStart[i])
+            end
+        end
+    end
+end
