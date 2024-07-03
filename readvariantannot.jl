@@ -5,8 +5,6 @@
 
 function samReadUser(samfile, variantfile, variantdefined)
     # reading the sam for the variants and indexing the variants as Any[] and then mapping the reads to variants by the position
-    # iteration over the range of the start and the stop and if the read start iter is present
-    # in the range of the mapped position extract the read and annotate the read
     # no memory loading needed making the annotations faster.
     # using Int64 so that no buffer overflow occurs.
     readmapStart = Any[]
@@ -42,11 +40,6 @@ function samReadUser(samfile, variantfile, variantdefined)
 end
 
 function samReadsAll(samfile, variantfile)
-    # reading the sam for the variants and indexing the variants as Any[] and then mapping the reads to variants by the position
-    # iteration over the range of the start and the stop and if the read start iter is present
-    # in the range of the mapped position extract the read and annotate the read
-    # no memory loading needed making the annotations faster.
-    # using Int64 so that no buffer overflow occurs.
     readmapStart = Any[]
     readmapEnd = Any[]
     readMIDTags = Any[]
@@ -79,11 +72,6 @@ function samReadsAll(samfile, variantfile)
 
 
 function samReadsKmerPlot(samfile, variantfile)
-    # reading the sam for the variants and indexing the variants as Any[] and then mapping the reads to variants by the position
-    # iteration over the range of the start and the stop and if the read start iter is present
-    # in the range of the mapped position extract the read and annotate the read
-    # no memory loading needed making the annotations faster.
-    # using Int64 so that no buffer overflow occurs.
     readmapStart = Any[]
     readmapEnd = Any[]
     readMIDTags = Any[]
@@ -115,6 +103,7 @@ function samReadsKmerPlot(samfile, variantfile)
     end
     function kmerplot(frequency)
         ### adding a closure here for the kmer so that it can be called for any stored variable with in the function.
+        ### this can tell you the type of the kmers associated with the variants. 
         selreadString = [getReads[i][3] i in 1:length(getReads)]
         selreadsStart = [getReads[i][1] i in 1:length(getReads)]
         selreadEnd = [getReads[i][2] i in 1:length(getReads)]
