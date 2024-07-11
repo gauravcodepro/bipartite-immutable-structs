@@ -1,6 +1,5 @@
 #! /usr/bin/env julia
 # Author Gaurav
-# Universitat Potsdam
 # Date 2024-7-3
 
 function samReadUser(samfile, variantfile, variantdefined)
