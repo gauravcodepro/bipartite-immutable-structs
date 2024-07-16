@@ -1,4 +1,4 @@
-# julia-readvariantannot.jl
+# readvariantannot.jl
 
 - implementing mutable structs for genes and pangenes. 
 - uses Int64 so that no bufferflow @btime: a samfile with 5GB parsed in less than 10 minutes. 
